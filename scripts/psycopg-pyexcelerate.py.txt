@@ -1,0 +1,108 @@
+#!/usr/bin/python
+import psycopg2
+import sys
+# from config import config
+from pyexcelerate import Workbook, Color, Style, Fill, Font, Alignment
+
+# Script by Tom Shearer, feel free to use and mod as needed
+# This is a script that only served as a testing mechanism when comparing the speed of
+# Psycopg and Pyexcelerate in Python vs a custom-modified xlsxwriter and PDO in PHP.
+#
+# This is the losing Python script.
+#
+# Please note that everything in <<Less than and greater than signs>> is
+# a redacted field, and to use, you'll need to fix it yourself!
+
+
+
+
+
+def connect():
+	# """ Connect to the PostgreSQL database server """
+	conn = None
+	if sys.argv[1].isdigit() == False:
+		print("Argument is not an integer!")
+		sys.exit()
+	try:
+		# read connection parameters
+		# params = config()
+
+		# connect to the PostgreSQL server
+		# print('Connecting to the PostgreSQL database...')
+		conn = psycopg2.connect(host="<<localhost>>",database="<<database>>", user="<<username>>", password="<<password>>")
+
+		# create a cursor
+		cur = conn.cursor()
+
+		# execute a statement
+		# print('Executing....')
+		cur.execute("""SELECT * FROM <<database>> WHERE <<UNIQUE ID>>=%s
+
+		"""%sys.argv[1]) #or however you want to do it
+
+		# This is the header. should be formatted like so, based off the data you pull
+		# [("Top Line Column 1","Top Line Column 2"),("Second Line","Second Line Column 2"),("These","Are","Here","As","An","Example")]
+		rawdata = "<<HEADER INFO HERE>>"+cur.fetchall()
+		size=str(len(rawdata))
+		# print("Data Received")
+		data=[]
+		subdata=[]
+		for r in rawdata:
+			for c in r:
+				if c is None:
+					subdata.append("")
+				else:
+					subdata.append(c)
+			data.append(subdata)
+			subdata=[]
+		wb = Workbook()
+		ws=wb.new_sheet("test", data=data)
+
+		##### Styles #####
+
+		# Blanket Styles
+		# ws.range("A1","O"+size).style.font.family = "Arial"
+		# ws.range("A1","O"+size).style.font.size = 11
+		# ws.range("A1","O"+size).style.alignment.vertical = "center"
+
+		# # Column Headers
+		# ws.range("A3","O3").style.font.color = Color(255,255,255,0)
+		# ws.range("A3","O3").style.fill.background = Color(0,0,0,0)
+
+		# Row Headers
+		# ws.range("A4","A"+size).style.font.size = 12
+		# ws.range("A4","A"+size).style.font.bold = True
+		#
+		# # Majority Cells
+		# ws.range("A3","O"+size).style.alignment.horizontal = "center"
+		# ws.range("A3","O"+size).style.borders.top.color = Color(0,0,0,0)
+		# ws.range("A3","O"+size).style.borders.bottom.color = Color(0,0,0,0)
+		# ws.range("A3","O"+size).style.borders.left.color = Color(0,0,0,0)
+		# ws.range("A3","O"+size).style.borders.right.color = Color(0,0,0,0)
+		# ws.range("A3","O"+size).style.alignment.wrap_text = True
+		#
+		# # Minority Cells
+		# ws.range("J4","K"+size).style.alignment.horizontal = "left"
+
+		##### END Styles #####
+
+
+		w=[0,25,12,15,10,20,12,20,20,36,85,50,12,12,14,10] #column widths
+		for i in range(1,16):
+			ws.set_col_style(i, Style(size=w[i]))
+			# print(str(i)+"-"+str(w[i]))
+
+		wb.save(sys.argv[1]+".xlsx")
+
+	 # close the communication with the PostgreSQL
+		cur.close()
+	except (Exception, psycopg2.DatabaseError) as error:
+		print(error)
+	finally:
+		if conn is not None:
+			conn.close()
+			# print('Database connection closed.')
+
+
+if __name__ == '__main__':
+	connect()

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="game.js"></script>
+</head>
+
+<body>
+	<div id="container">
+		<div id="main">
+
+		</div>
+		<br>
+		<div id="win"></div>
+
+		<div id="menubar">
+			<input type="hidden" value="pen" id="toolname">
+			<div id="tools">
+				<input type='button' id="pen" value="🖋️">
+				<input type='button' id="cross" value="❌">
+			</div>
+			<div id="lives" />
+		</div>
+		<script>
+		newGame(puzzle,3);
+		</script>
+	</div>
+</body>
+</html>
