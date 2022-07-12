@@ -29,6 +29,13 @@ tr:nth-child(5n+2) td{
 	text-align:right;
 	/* font-family: monospace; */
 }
+#newgame{
+	position:absolute;
+	right:0px;
+	top:0px;
+	font-size: 24px;
+	height:100%;
+}
 #lives{
 	display:inline-block;
 	/* background:white; */
@@ -47,9 +54,9 @@ tr:nth-child(5n+2) td{
 	font-family: monospace;
 	letter-spacing: 0.5em;
 	padding:10px;
-	
+
 }
-#menubar input[type=button]{
+#menubar .tool{
 	height:50px;
 	width:50px;
 	background:#fff;

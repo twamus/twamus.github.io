@@ -17,14 +17,18 @@
 		<div id="menubar">
 			<input type="hidden" value="pen" id="toolname">
 			<div id="tools">
-				<input type='button' id="pen" value="🖋️">
-				<input type='button' id="cross" value="❌">
+				<input type='button' class='tool' id="pen" value="🖋️">
+				<input type='button' class='tool' id="cross" value="❌">
+
 			</div>
-			<div id="lives" />
+			<div id="lives"></div>
+			<input type='button' id="newgame" value="New Game" onclick="restartGame();">
 		</div>
-		<script>
-		newGame(puzzle,3);
-		</script>
-	</div>
+
+	</div><br><br>
+	<div id="version"></div>
+	<script>
+	newGame();
+	</script>
 </body>
 </html>
