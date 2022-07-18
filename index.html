@@ -71,10 +71,13 @@
 											<a href="projects/psycopg-pyexcelerate.py.txt" class="image fit"><img src="images/python.png" alt=""></a>
 											<h3>XLS Python Speed</h3> An unused script for some report generation. (text file)
 										</div>
+										<!--div class="col-4 col-6-medium col-12-small">
+											<a href="#ptest" class="image fit"><img src="images/pic04.jpg" alt=""></a>
+											<h3>Test</h3>
+										</div!-->
+										
 										<!-- FUTURE ITEMS PROBABLY
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="images/pic04.jpg" alt=""></a>
-										</div>
+
 										<div class="col-4 col-6-medium col-12-small">
 											<a href="#" class="image fit"><img src="images/pic05.jpg" alt=""></a>
 										</div>
@@ -143,6 +146,25 @@
 									</div>
 								</form!-->
 							</article>
+
+							<article id="ptest" class="panel">
+								<a href="javascript:history.back();">Back to projects</a>
+								<script>
+								fetch("./projects/qdir.html")
+								  .then(response => {
+								    return response.text()
+								  })
+								  .then(data => {
+								    document.querySelector("header").innerHTML = data;
+								  });
+								</script>
+
+								<header>
+									<h2></h2>
+								</header>
+								Test
+							</article>
+
 
 					</div>
 
