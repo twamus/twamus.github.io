@@ -10,6 +10,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/custom.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -45,10 +46,10 @@
 						<!-- Work -->
 							<article id="work" class="panel">
 								<header>
-									<h1>Projects</h1>
+									<h2>Projects</h2>
 								</header>
 								<p>
-									Things I've created, past and present.
+									Projects that I have written.
 								</p>
 								<section>
 									<div class="row">
@@ -71,39 +72,24 @@
 											<a href="projects/psycopg-pyexcelerate.py.txt" class="image fit"><img src="images/python.png" alt=""></a>
 											<h3>XLS Python Speed</h3> An unused script for some report generation. (text file)
 										</div>
-										<!--div class="col-4 col-6-medium col-12-small">
-											<a href="#ptest" class="image fit"><img src="images/pic04.jpg" alt=""></a>
-											<h3>Test</h3>
-										</div!-->
-										
-										<!-- FUTURE ITEMS PROBABLY
+									</div>
+								</section>
 
+								<section>
+									<div class="row">
+										<header><h2>Project Descriptions</h2></header>
+										<p>
+											Things I've created working as a software developer that I cannot share the code for, only a description and sometimes screenshots.
+										</p>
 										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="images/pic05.jpg" alt=""></a>
+											<a href="#qdir64" class="image fit"><img src="images/qdir64.png" alt=""></a>
+											<h3>qDIR64</h3> A modular file management tool, focused on handling address data for bulk mailing.
 										</div>
 										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="images/pic06.jpg" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="images/pic07.jpg" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="images/pic08.jpg" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="images/pic09.jpg" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="images/pic10.jpg" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="images/pic11.jpg" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="images/pic12.jpg" alt=""></a>
+											<a href="#pmt" class="image fit"><img src="images/pmt.png" alt=""></a>
+											<h3>PMT</h3> A project management tool, name redacted.
 										</div>
 									</div>
-									!-->
 								</section>
 							</article>
 
@@ -122,49 +108,74 @@
 									<h2>Contact Me</h2>
 								</header>
 								LinkedIn: <a href="https://www.linkedin.com/in/twam/">https://www.linkedin.com/in/twam/</a>
+								Indeed:
 								<br><br>
-								<i><b>Please note:</b> I don't have any other social media.</i>
-								<!--form action="#" method="post">
-									<div>
-										<div class="row">
-											<div class="col-6 col-12-medium">
-												<input type="text" name="name" placeholder="Name" />
-											</div>
-											<div class="col-6 col-12-medium">
-												<input type="text" name="email" placeholder="Email" />
-											</div>
-											<div class="col-12">
-												<input type="text" name="subject" placeholder="Subject" />
-											</div>
-											<div class="col-12">
-												<textarea name="message" placeholder="Message" rows="6"></textarea>
-											</div>
-											<div class="col-12">
-												<input type="submit" value="Send Message" />
-											</div>
-										</div>
-									</div>
-								</form!-->
+								<i><b>Please note:</b> I don't have any other social media, please contact me through either</i>
 							</article>
 
-							<article id="ptest" class="panel">
-								<a href="javascript:history.back();">Back to projects</a>
-								<script>
-								fetch("./projects/qdir.html")
-								  .then(response => {
-								    return response.text()
-								  })
-								  .then(data => {
-								    document.querySelector("header").innerHTML = data;
-								  });
-								</script>
-
+							<article id="qdir64" class="panel">
+								<a href="#work">Back to projects</a><br><br>
 								<header>
-									<h2></h2>
+									<h2>qDIR64</h2>
 								</header>
-								Test
+								<p>
+									The original qDIR was the name of an in-house file/data management tool written in qBASIC, used to process and manage mailing data lists.
+									These utilities were written in Visual Basic and Python in around 2014.
+								</p>
+								<p>
+									As 16-bit applications were reaching their end of life, a lot of our old data management tools were going to be left in the dust.
+									We needed a solution to solve the looming deprecation of older software solutions, retain compatibility with older files, and allow
+									for the future growth and additions to tools without breaking the core system or drastic changes to the workflow.
+								</p>
+								<img src="projects/qdir64-1.png">
+								<br><br><br>
+									<b>Noteable Features</b>
+									<ul>
+										<li>Fully controllable by keyboard navigation to speed up processing (selecting items with spacebar, tab to change to tools, using back arrow to swap between files and folders).</li>
+										<li>Customizable toolbar; could enable and disable tools with dragg and drop.</li>
+										<li>Purely modular; The core code was written in Visual Basic, but also supported tools written and scripts in Python and other languages.</li>
+									</ul>
+										<b>Python Tool Descriptions</b>
+									<ul>
+										<li><b>ADD (Python)</b>: Blindly combines multiple CSV files together. Useful for combining standardized lists.</li>
+										<li><b>DBF to CSV (Python)</b>: Converts DBIII file to CSV format</li>
+										<li><b>ODOA Test (Python)</b>: Strips line breaks out of the middle of CSV fields.</li>
+										<li><b>Satori Prep (Python)</b>: Prepares a CSV to be ran through an automated template in Satori Bulk Mailer. The script would run, prompt the user to run Satori address verification, Satori would export a file, and the script would attach the fields we did not want modified by Satori</li>
+										<li><b>Shuffle (Python)</b>: Used to prepare items for N-up printing. This would make it so that when printing and cutting a stack of postcards that they would be in the correct order.</li>
+										<li><b>Split (Python)</b>: This would split one CSV file into multiple CSV files by a field value.</li>
+										<li><b>Title Case (Python)</b>: Simply title cases all fields.</li>
+										<li><b>Uppercase (Python)</b>: Simply makes every field uppercase.</li>
+									</ul>
+										<b>VB Tool Descriptions</b>
+									<ul>
+										<li><b>DBQ (VB)</b>: Simple and quick CSV viewer and editor (useful for when Excel really liked dropped leading "0"s on zip codes)</li>
+										<li><b>LLoDD (VB)</b>: This would generate a suggested layout preview and breakdown/example of each fields to show the client and ask them what they would like on their mailing piece. This also generated .ADM files for use in inkjet address printers.</li>
+										<li><b>Merge (VB)</b>: Merges numerous CSVs of varying contents together into one clean master. The user decides which fields get merged together into the output file</li>
+										<li><b>Zip4 Finder (VB)</b>: Satori address checking would sometimes miss the mark on address checking. This tool would pull from the USPS website to verify the Zip+4, and then export it to an address record in Satori Bulk Mailer.</li>
+									</ul>
+
 							</article>
 
+							<article id="pmt" class="panel">
+								<a href="#work">Back to projects</a><br><br>
+								<header>
+									<h2>Project Management Tool</h2>
+								</header>
+								<p>
+									Due to the nature of proprietary information on this project, I am unable to share any screenshots or the name of it, thus I will be referring to it as Project Management Tool, or PMT for short.
+									I do, however, have license to create a mock-up, from memory, in Microsoft Paint!
+								</p>
+								<img src="projects/pmt-mockup.png">
+								<br><br><br>
+								<p>Initially, the workflow was based off of Excel documents that would get updated throughout the day/week, which was a logistical nightmare to ensure everyone was working off of the same document.
+									This tool was created as a place to centrally host work orders relating to clients that would ship to multiple stores nation wide. Many of the orders would have similar base components, so there
+									were templates and presets setup to help streamline the process.</p>
+								<p>The end scope of this project was to house all of the data for each of the projects so that things such as packing and shipping could be automated.</p>
+								<!--b>Noteable Features</b>
+								<ul>
+									<li></li>
+								</ul!-->
+							</article>
 
 					</div>
 

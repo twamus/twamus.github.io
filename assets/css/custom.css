@@ -1,0 +1,17 @@
+/*
+	CSS modifications for Tom Shearer's GitHub.io page project
+*/
+.div-cell-wrapper{
+
+}
+.div-cell{
+  float:left;
+  padding:2em;
+  line-height:1.1em;
+}
+p, div{
+  line-height:1.1em;
+}
+h3{
+  line-height:1.5em;
+}
