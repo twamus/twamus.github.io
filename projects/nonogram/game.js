@@ -8,10 +8,8 @@
 // Option: Maybe make an increased difficulty (nay, !impossible! difficulty)
 // where numbers are just totals of the row, not distributed
 
-//Version 1.1
-- Fixed bug where incorrectly marking an X would fail to satisfy the win condition
-- Added New Game button, restructured code to allow for this to happen.
-- Code cleanup, added notes.
+//Version 1.11
+- Fixed win and lives text resetting when new game button was clicked.
  ---END NOTES--- */
 
 
@@ -20,7 +18,7 @@ function $(s){return document.getElementById(s);}
 function $$(s){return document.querySelectorAll(s);}
 
 Element.prototype.remove = function() {this.parentElement.removeChild(this);}
-let version="1.1a";
+let version="1.11";
 let size=10;
 let puzzle,puzzlecheck;
 let lives=3;
@@ -28,7 +26,9 @@ let lives=3;
 
 function restartGame(){
 	if(confirm('New Game?')){
-		//remove previous table and lives
+		//remove previous table, lives, winning screen, game over screen
+		$("win").innerText="";
+		$("lives").innerText="";
 		$("gametable").remove("gametable");
 		while($("lives").firstChild) {
 			$("lives").removeChild($("lives").firstChild);
