@@ -1,0 +1,355 @@
+﻿using System;
+using System.Runtime.InteropServices;
+using System.Windows;
+using System.Windows.Interop;
+using System.Reflection;
+using System.Xml;
+using System.Xml.Linq;
+using System.Linq;
+using System.Collections.Generic;
+using System.Data;
+using System.Windows.Controls;
+using Microsoft.WindowsAPICodePack.Dialogs;
+using System.Windows.Data;
+using System.Dynamic;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
+namespace Twamboard
+{
+    public class KeyVal
+    {
+        public string Name { get; set; }
+        public uint Key { get; set; }
+        public uint Mod { get; set; }
+        public string File { get; set; }
+        public int Volume { get; set; }
+    }
+    public partial class MainWindow : Window
+    {
+        [DllImport("user32.dll")]
+        private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
+        [DllImport("user32.dll")]
+        private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+        private const int HOTKEY_ID = 9000;
+        public BindingList<KeyVal> SetKeys = new BindingList<KeyVal>();
+        public Dictionary<uint, int> KeyIndex = new Dictionary<uint, int>();
+        WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
+        public string filePath = @"c:\";
+        public uint stopkey = 0;
+        public string ModKey;
+        public string PressedKey;
+        public MainWindow()
+        {
+            //var kv = new KeyVal();
+            InitializeComponent();
+            //GetXML("twam.xml");
+
+            //Eee();
+        }
+
+        private IntPtr _windowHandle;
+        private HwndSource _source;
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            DataG.ItemsSource = SetKeys;
+            base.OnSourceInitialized(e);
+            _windowHandle = new WindowInteropHelper(this).Handle;
+            _source = HwndSource.FromHwnd(_windowHandle);
+            _source.AddHook(HwndHook);
+            GetXML("Default.xml");
+            
+        }
+        private void PlaySound(uint vkey)
+        {
+            if (vkey == stopkey)
+            {
+                wplayer.controls.stop();
+                Console.WriteLine("STOP");
+            }
+            else
+            {
+                KeyVal kv = SetKeys[KeyIndex[vkey]];
+                wplayer.URL = filePath + kv.File;
+                wplayer.settings.volume = kv.Volume;
+                wplayer.controls.play();
+                tbox.Text += "playing: " + kv.Name + Environment.NewLine;
+                tbox.ScrollToEnd();
+            }
+
+        }
+        private IntPtr HwndHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            const int WM_HOTKEY = 0x0312;
+            switch (msg)
+            {
+                case WM_HOTKEY:
+                    switch (wParam.ToInt32())
+                    {
+                        case HOTKEY_ID:
+                            uint vkey = (((uint)lParam >> 16) & 0xFFFF);
+                            //Console.WriteLine(lParam);
+                            PlaySound(vkey);
+                            handled = true;
+                            break;
+                    }
+                    break;
+
+            }
+            return IntPtr.Zero;
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            _source.RemoveHook(HwndHook);
+            UnregisterHotKey(_windowHandle, HOTKEY_ID);
+            base.OnClosed(e);
+        }
+        public void GetXML(string filename)
+        {
+            
+            UnregisterHotKey(_windowHandle, HOTKEY_ID); //CTRL + CAPS_LOCK
+            KeyIndex.Clear();
+            SetKeys.Clear();
+            XDocument xdoc = XDocument.Load(filename);
+            filePath = xdoc.Elements("xmldata").Elements("PATH").FirstOrDefault().Value;
+            MediaFolder.Text = filePath;
+            if(UInt32.TryParse(xdoc.Elements("xmldata").Elements("STOPKEY").FirstOrDefault().Value, out uint sk))
+            {
+                stopkey = sk;
+                RegisterHotKey(_windowHandle, HOTKEY_ID, 0, sk); //CTRL + CAPS_LOCK
+            }
+            else { MessageBox.Show("Invalid Stop Key"); }
+
+            DataSet ds = new DataSet();
+            ds.ReadXml(filename);
+            DataView dt = new DataView(ds.Tables[1]);
+            
+            //DataG.ItemsSource = dt;
+            //DataG.DataContext=
+            int i = 0;
+            
+            foreach (XElement line in xdoc.Elements("xmldata").Elements("NOISE"))
+            {
+                string kname = "";
+                uint kkey = 10;
+                uint kmod = 0;
+                string kfile = "";
+                int kvolume = 0;
+                //var aa = line.Nodes();
+                foreach (XElement l in line.Descendants())
+                {
+
+                    switch (l.Name.ToString())
+                    {
+                        case "NAME":
+                            kname = l.Value;
+                            break;
+                        case "KEY":
+                            if (UInt32.TryParse(l.Value, out uint n))
+                            {
+                                kkey = n;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Problem detected with " + l.Value);
+                            }
+                            //kkey = l.Value.ToUInt32();
+                            break;
+                        case "MOD":
+                            if (UInt32.TryParse(l.Value, out uint m))
+                            {
+                                kmod = m;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Problem detected with " + l.Value);
+                            }
+                            //kkey = l.Value.ToUInt32();
+                            break;
+                        case "FILE":
+                            kfile = l.Value;
+                            break;
+                        case "VOLUME":
+                            if (Int32.TryParse(l.Value, out int v))
+                            {
+                                kvolume = v;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Problem detected with " + l.Value);
+                            }
+                            break;
+
+                    }
+                }
+                SetKeys.Add(new KeyVal
+                {
+                    Name = kname,
+                    Key = kkey,
+                    Mod = kmod,
+                    File = kfile,
+                    Volume = kvolume
+                });
+                RegisterHotKey(_windowHandle, HOTKEY_ID, kmod, kkey); //CTRL + CAPS_LOCK
+                KeyIndex.Add(kkey, i);
+                i++;
+            }
+        }
+
+        private void AddRow_Click(object sender, RoutedEventArgs e)
+        {
+            //((DataView)DataG.ItemsSource).AddNew();
+            SetKeys.Add(new KeyVal());
+        }
+
+        private void DeleteRow_Click(object sender, RoutedEventArgs e)
+        {
+            if(DataG.SelectedIndex >= 0)
+            {
+                ((DataView)DataG.ItemsSource).Delete(DataG.SelectedIndex);
+                DataG.SelectedIndex = DataG.Items.Count - 1;
+            }
+        }
+
+        private void ReloadButton_Click(object sender, RoutedEventArgs e)
+        {
+            GetXML("twam.xml");
+        }
+        private void WriteButton_Click(object sender, RoutedEventArgs e)
+        {
+            WriteXML();
+        }
+        private void WriteXML()
+        {
+            XmlWriterSettings xmlWriterSettings = new XmlWriterSettings
+            {
+                NewLineOnAttributes = true,
+                Indent = true
+            };
+            XmlWriter xmlWriter = XmlWriter.Create("twam.xml",xmlWriterSettings);
+            xmlWriter.WriteStartDocument();
+            xmlWriter.WriteStartElement("xmldata");
+
+            xmlWriter.WriteStartElement("PATH");
+            xmlWriter.WriteString(@"C:\Soundboard\Sounds\");
+            xmlWriter.WriteEndElement();
+
+            xmlWriter.WriteStartElement("STOPKEY");
+            xmlWriter.WriteString("110");
+            xmlWriter.WriteEndElement();
+
+            string[] fields = { "NAME", "KEY", "MOD", "FILE", "VOLUME" };
+            //GetDataGridRows()
+            foreach (DataRowView dr in DataG.ItemsSource)
+            {
+                xmlWriter.WriteStartElement("NOISE");
+
+                foreach(string f in fields)
+                {
+                    xmlWriter.WriteStartElement(f);
+                    xmlWriter.WriteString(dr[f].ToString());
+                    xmlWriter.WriteEndElement();
+                }
+                xmlWriter.WriteEndElement();
+            }
+            xmlWriter.WriteEndElement();
+            xmlWriter.WriteEndDocument();
+            xmlWriter.Close();
+        }
+
+        private void MediaPath_Click(object sender, RoutedEventArgs e)
+        {
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog
+            {
+                InitialDirectory = filePath,
+                IsFolderPicker = true
+            };
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                //MessageBox.Show("You selected: " + dialog.FileName);
+                MediaFolder.Text = dialog.FileName + @"\";
+            }
+        }
+
+        private void DataG_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
+            if (sender != null&& DataG.SelectedCells[0] != null)
+            {
+                DataGrid grid = sender as DataGrid;
+                DataGridRow ggg = sender as DataGridRow;
+                DataGridCellInfo ar = grid.SelectedCells[0];
+                //MessageBox.Show("STOP");
+                switch (grid.SelectedCells[0].Column.Header)
+                {
+                    case "NAME":
+                        break;
+                    case "KEY":
+                        break;
+                    case "MOD":
+                        MapKey(grid);
+                        e.Handled = true;
+                        break;
+                    case "FILE":
+                        break;
+                    case "VOLUME":
+                        break;
+                }
+            }
+
+        }
+        public void MapKey(DataGrid grid)
+        {
+            KeyMapper kmap = new KeyMapper();
+            kmap.ShowDialog();
+            SetKeys[grid.Items.IndexOf(grid.CurrentItem)].Mod = kmap.ModifierKeyName;
+            SetKeys[grid.Items.IndexOf(grid.CurrentItem)].Key = (UInt32)KeyInterop.VirtualKeyFromKey(kmap.KeyPressed);
+            SetKeys.ResetBindings();
+        }
+        public string SetSelectedCellValue(DataGrid MyDataGrid, int val)
+        {
+            DataGridCellInfo cellInfo = MyDataGrid.SelectedCells[0];
+            if (cellInfo == null) return null;
+
+            if (!(cellInfo.Column is DataGridBoundColumn column)) return null;
+
+            FrameworkElement element = new FrameworkElement() { DataContext = cellInfo.Item };
+            BindingOperations.SetBinding(element, TagProperty, column.Binding);
+
+            return element.Tag.ToString();
+        }
+        private void DataG_PreviewMouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void EnableButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (EnableButton.Content.ToString() == "Enabled")
+            {
+                UnregisterHotKey(_windowHandle, HOTKEY_ID);
+                EnableButton.Content = "Disabled";
+                DataG.IsEnabled = true;
+            }
+            else
+            {
+                RegisterHotKey(_windowHandle, HOTKEY_ID, 0, stopkey); //CTRL + CAPS_LOCK
+                EnableButton.Content = "Enabled";
+                DataG.IsEnabled = false;
+                KeyIndex.Clear();
+                int i = 0;
+                foreach (KeyVal kv in SetKeys)
+                {
+                    RegisterHotKey(_windowHandle, HOTKEY_ID, kv.Mod, kv.Key);
+                    KeyIndex.Add(kv.Key, i);
+                    i++;
+                }
+
+            }
+        }
+    }
+
+}
