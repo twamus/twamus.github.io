@@ -22,7 +22,7 @@ function $(s){return document.getElementById(s);}
 function $$(s){return document.querySelectorAll(s);}
 
 Element.prototype.remove = function() {this.parentElement.removeChild(this);}
-let version="1.21";
+let version="1.22";
 let size=10;
 let puzzle,puzzlecheck;
 let lives=3;
@@ -58,7 +58,6 @@ function pregameLoad(){
 }
 function newGame(){
 	pregameLoad();
-	console.log(puzzle);
 	let life=document.createElement("div");
 	for(let i=0;i<lives;i++){
 		let life=document.createElement("div");
@@ -180,7 +179,7 @@ function toolSelect(tool){
 	}
 }
 function youLose(){
-	$("lives").innerText="G A M E _ O V E R";
+	$("lives").innerText="GAME OVER";
 	let cells=document.getElementsByTagName("td");
 	for(let i=0;i<cells.length;i++){
 		cells[i].className="invalid";
@@ -223,7 +222,6 @@ function checkWin(){
 	if(JSON.stringify(puzzle)===JSON.stringify(puzzlecheck)){
 		$("win").innerHTML="Hey cool, you won! Enjoy your prize of: <div id='prize'><b>ERROR:</b> <i>Prize not implemented.</i></div>";
 		let cells=document.getElementsByTagName("td");
-		console.log(cells);
 		for(let i=0;i<cells.length;i++){
 			if(cells[i].className==""){
 				cells[i].className="invalid";

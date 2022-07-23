@@ -6,6 +6,7 @@ td{
 	height:2em;
 	width:2em;
 	border:2px solid black;
+	touch-action: manipulation;
 }
 td:nth-child(5n+1){
 	border-right:3px solid black;
@@ -58,16 +59,18 @@ tr:nth-child(5n+2) td{
 	background-color:#000;
 	position:relative;
 	bottom:0;left:0;
-	/* line-height:2em; */
 	font-family: monospace;
 	letter-spacing: 0.5em;
 	padding:10px;
+}
+#tools{
+	display:inline-block;
 }
 #menubar .tool{
 	background:#fff;
 	padding:0;
 	font-size: 2em;
-	
+
 	border: 5px solid white;
 	display:inline-block;
 	width:1.5em;
@@ -82,9 +85,7 @@ tr:nth-child(5n+2) td{
 	height:100%;
 	position:absolute;
 }
-#tools{
-	display:inline;
-}
+
 #main{
 	text-align:center;
 	margin:auto;
