@@ -22,7 +22,7 @@ function $(s){return document.getElementById(s);}
 function $$(s){return document.querySelectorAll(s);}
 
 Element.prototype.remove = function() {this.parentElement.removeChild(this);}
-let version="1.2";
+let version="1.21";
 let size=10;
 let puzzle,puzzlecheck;
 let lives=3;

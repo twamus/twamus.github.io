@@ -1,5 +1,6 @@
 html{
 	font-size:2em;
+	touch-action: manipulation;
 }
 td{
 	height:2em;
@@ -64,9 +65,15 @@ tr:nth-child(5n+2) td{
 }
 #menubar .tool{
 	background:#fff;
+	padding:0;
+	font-size: 2em;
+	
+	border: 5px solid white;
+	display:inline-block;
+	width:1.5em;
+	height:1.5em;
 	font-size:1.5em;
-	width:2em;
-	height:2em;
+	text-align: center;
 }
 #newgame{
 	right:0px;
@@ -77,9 +84,6 @@ tr:nth-child(5n+2) td{
 }
 #tools{
 	display:inline;
-}
-#tools input{
-	border-radius: 0.5em;
 }
 #main{
 	text-align:center;
