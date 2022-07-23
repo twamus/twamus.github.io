@@ -8,8 +8,12 @@
 // Option: Maybe make an increased difficulty (nay, !impossible! difficulty)
 // where numbers are just totals of the row, not distributed
 
-//Version 1.11
-- Fixed win and lives text resetting when new game button was clicked.
+//Version 1.2
+- Made dimensions scale for mobile
+- Resized menu bar tools/lives
+- Moved version to the top
+- Made rows and columns auto-populate X's when row is solved. only exception being that when they start as 0, it does not auto populate.
+- Made rows and columns highlight the header when it is solved.
  ---END NOTES--- */
 
 
@@ -18,7 +22,7 @@ function $(s){return document.getElementById(s);}
 function $$(s){return document.querySelectorAll(s);}
 
 Element.prototype.remove = function() {this.parentElement.removeChild(this);}
-let version="1.11";
+let version="1.2";
 let size=10;
 let puzzle,puzzlecheck;
 let lives=3;
@@ -42,10 +46,10 @@ function pregameLoad(){
 	$("toolname").value="pen";
 	for(let i=0;i<tools.children.length;i++){
 		if(tools.children[i].id=="pen"){
-			tools.children[i].style.backgroundColor="#00f";
+			tools.children[i].style.background="linear-gradient(-45deg, #0cf, #cff)";
 		}
 		else{
-			tools.children[i].style.backgroundColor="#fff";
+			tools.children[i].style.background="";
 		}
 		tools.children[i].onclick=toolSelect;
 	}
@@ -54,10 +58,11 @@ function pregameLoad(){
 }
 function newGame(){
 	pregameLoad();
+	console.log(puzzle);
 	let life=document.createElement("div");
 	for(let i=0;i<lives;i++){
 		let life=document.createElement("div");
-		life.innerText=" 🔴 ";
+		life.innerText="🔴";
 		$("lives").append(life);
 	}
 	//gets me an [X, Y] for sanity sake
@@ -96,6 +101,7 @@ function newGame(){
 		}
 		cell.innerHTML=sideheader[y].join(" &nbsp;");
 		cell.className="sideheader";
+		cell.id="R"+y;
 		row.prepend(cell);
 		table.append(row);
 	}
@@ -109,11 +115,12 @@ function newGame(){
 			topheader[i].pop();
 		}
 		cell.innerHTML=topheader[i].join("<br>");
+		cell.id="C"+i;
 		row.append(cell);
 	}
 	row.className="topheader";
+
 	table.prepend(row);
-	console.log(table);
 	$("main").append(table);
 
 }
@@ -156,6 +163,7 @@ function clickedCell(cell){
 			}
 		}
 	}
+	checkLine(x,y);
 	checkWin();
 }
 
@@ -164,13 +172,12 @@ function toolSelect(tool){
 	$("toolname").value=tool.target.id;
 	for(let i=0;i<tools.children.length;i++){
 		if(tools.children[i].id==tool.target.id){
-			tools.children[i].style.backgroundColor="#00f";
+			tools.children[i].style.background="linear-gradient(-45deg, #0cf, #cff)";
 		}
 		else{
-			tools.children[i].style.backgroundColor="#fff";
+			tools.children[i].style.background="";
 		}
 	}
-	// if(tool.target.id)
 }
 function youLose(){
 	$("lives").innerText="G A M E _ O V E R";
@@ -179,18 +186,39 @@ function youLose(){
 		cells[i].className="invalid";
 	}
 }
+function checkLine(x,y){
+	// Checks for complete row or column, then highlights it cyan and auto-fills X's.
+	// Row:
+	if(JSON.stringify(puzzle[y])===JSON.stringify(puzzlecheck[y])){
+		for(let i=0;i<puzzle.length;i++){
+			let el=document.getElementById(i+"-"+y)
+			if(el.className==""){
+				el.className="invalid";
+			}
+		}
+		document.getElementById("R"+y).className="sideheader solved";
+	}
+	// Column:
+	let colcomplete=0;
+	for(let n=0;n<puzzle.length;n++){
+		if(puzzle[n][x]!=puzzlecheck[n][x]){
+			colcomplete=0;break;
+		}
+		colcomplete=1;
+	}
+	if(colcomplete==1){
+		for(let i=0;i<puzzle.length;i++){
+			let el=document.getElementById(x+"-"+i)
+			if(el.className==""){
+				el.className="invalid";
+			}
+		}
+		document.getElementById("C"+x).className="solved";
+	}
+}
+
 function checkWin(){
-	//TODO: check for complete row
-	// for(let y=0;y<puzzle.length;y++){
-	// 	if(JSON.stringify(puzzle[y])===JSON.stringify(puzzlecheck[y])){
-	// 		$("table")
-	// 		document.getElementsByName("row"+y).forEach(function(el){
-	// 			if(el.className==""){
-	// 				el.className="invalid";
-	// 			}
-	// 		});
-	// 	}
-	// }
+
 	//check for win condition
 	if(JSON.stringify(puzzle)===JSON.stringify(puzzlecheck)){
 		$("win").innerHTML="Hey cool, you won! Enjoy your prize of: <div id='prize'><b>ERROR:</b> <i>Prize not implemented.</i></div>";

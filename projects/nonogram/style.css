@@ -1,6 +1,9 @@
+html{
+	font-size:2em;
+}
 td{
-	width:25px;
-	height:25px;
+	height:2em;
+	width:2em;
 	border:2px solid black;
 }
 td:nth-child(5n+1){
@@ -20,33 +23,36 @@ tr:nth-child(5n+2) td{
 	/* width:50px; */
 	/* height:100px; */
 	vertical-align:bottom;
+	font-size:1em;
+	line-height:1em;
+	height:5.5em;
 	/* font-family: monospace; */
+
 }
 .sideheader{
 	color:blue;
 	/* width:100px; */
 	/* height:50px; */
+	font-size:1em;
+	width:5em;
+
 	text-align:right;
 	/* font-family: monospace; */
 }
-
-#newgame{
-	position:absolute;
-	right:0px;
-	top:0px;
-	font-size: 24px;
-	height:100%;
+.solved{
+	background-color:#bef;
 }
 #lives{
-	display:inline-block;
+	display:inline;
 	/* background:white; */
-	margin:auto;
-	vertical-align:middle;
 	font-size:2em;
 	text-shadow:-1px -1px #fff,1px 1px #fff,-1px 1px #fff,1px -1px #fff;
 	/* text-shadow:; */
+	height:200px;
 }
-#lives div{display:inline;}
+#lives div{
+	display:inline; height:100%;
+}
 #menubar{
 	background-color:#000;
 	position:relative;
@@ -55,15 +61,25 @@ tr:nth-child(5n+2) td{
 	font-family: monospace;
 	letter-spacing: 0.5em;
 	padding:10px;
-
 }
 #menubar .tool{
-	height:50px;
-	width:50px;
 	background:#fff;
+	font-size:1.5em;
+	width:2em;
+	height:2em;
+}
+#newgame{
+	right:0px;
+	top:0px;
+	font-size: 1.5em;
+	height:100%;
+	position:absolute;
 }
 #tools{
 	display:inline;
+}
+#tools input{
+	border-radius: 0.5em;
 }
 #main{
 	text-align:center;
@@ -80,5 +96,10 @@ table{
 }
 #container{
 	margin:0;
-	width:700px;
+	width:100%;
+}
+#version{
+	position:absolute;
+	left:0.5em;
+	top:0.2em;
 }
