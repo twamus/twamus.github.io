@@ -20,6 +20,10 @@ ASSETS = [
     "assets/js/main.js",
     "assets/img/projects/hermes.svg",
     "assets/img/projects/tradebot.svg",
+    "assets/img/projects/nonogram.svg",
+    "assets/img/projects/qdir64.svg",
+    "assets/img/projects/pmt.svg",
+    "assets/img/projects/shiptool.svg",
 ]
 
 def short_hash(path: Path) -> str:
