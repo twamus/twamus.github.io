@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Tom Shearer · Software Developer</title>
 <meta name="description" content="Tom Shearer, software developer and lifelong technology enthusiast. Projects, work experience, and contact." />
-<link rel="stylesheet" href="assets/css/style.css?v=1a1679810f" />
+<link rel="stylesheet" href="assets/css/style.css?v=6bc130674e" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23111'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%234a9eff' font-family='monospace'>&gt;_</text></svg>" />
 </head>
 <body>
@@ -141,6 +141,36 @@
           <p>A FedEx-certified shipping application that completed the loop between packing and project management: thermal labels, scale integration, live package tracking.</p>
           <div class="card-links">
             <a href="#shiptool" data-modal-open="shiptool">Details →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Hermes Agent -->
+      <article class="card">
+        <a class="card-img" href="#hermes" data-modal-open="hermes">
+          <img src="assets/img/projects/hermes.svg" alt="Hermes Agent terminal" loading="lazy" />
+        </a>
+        <div class="card-body">
+          <div class="card-meta"><span class="tag">AI / LLM</span><span class="tag">Automation</span><span class="card-year">ongoing</span></div>
+          <h3>Hermes Agent</h3>
+          <p>An autonomous AI agent that runs my digital operations: content pipelines, revenue infrastructure, and self-healing automation, all on my own hardware.</p>
+          <div class="card-links">
+            <a href="#hermes" data-modal-open="hermes">Details →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Trade Bot -->
+      <article class="card">
+        <a class="card-img" href="#tradebot" data-modal-open="tradebot">
+          <img src="assets/img/projects/tradebot.svg" alt="Trade Bot candlestick chart" loading="lazy" />
+        </a>
+        <div class="card-body">
+          <div class="card-meta"><span class="tag">Python</span><span class="tag">APIs</span><span class="card-year">exploration</span></div>
+          <h3>Trade Bot</h3>
+          <p>An exploration into the APIs of the investment world: paper-trading automation, market data, and strategy execution against live brokerage endpoints.</p>
+          <div class="card-links">
+            <a href="#tradebot" data-modal-open="tradebot">Details →</a>
           </div>
         </div>
       </article>
@@ -371,6 +401,72 @@
       <li>(Mid-development) batch shipping using weight estimation for similar items.</li>
       <li>Automatic, manual, and location overrides for package destinations.</li>
     </ul>
+    <button class="btn btn-ghost btn-sm" data-modal-close>Close</button>
+  </div>
+</div>
+
+<div class="modal" id="modal-hermes" role="dialog" aria-modal="true" aria-labelledby="hermes-title">
+  <div class="modal-backdrop" data-modal-close></div>
+  <div class="modal-content">
+    <button class="modal-x" data-modal-close aria-label="Close">×</button>
+    <h3 id="hermes-title">Hermes Agent</h3>
+    <p class="modal-meta"><span class="tag">AI / LLM</span> <span class="tag">Automation</span> <span class="tag">Python</span> <span class="tag">Ongoing</span></p>
+    <p>
+      Hermes is an autonomous AI agent that lives on my own server and runs my digital operations
+      end to end. It plans, executes, and self-corrects across the whole stack, without me babysitting it.
+    </p>
+    <p>
+      At a high level, it's my engineering partner that happens to be awake 24/7. It builds things,
+      ships them, monitors them, and fixes them when they break.
+    </p>
+    <h4>What it runs</h4>
+    <ul>
+      <li><b>Content pipelines</b>: full script-to-published-video automation across multiple YouTube channels, including AI voiceover, captions, and scheduling.</li>
+      <li><b>Revenue infrastructure</b>: digital product storefronts, payment gateways, and billing integrations running on my own hardware.</li>
+      <li><b>Self-healing automation</b>: a watchdog loop that detects failing jobs, diagnoses them, and deploys fixes without being asked.</li>
+      <li><b>Infrastructure</b>: web services, reverse proxy, and internal APIs all orchestrated on a single box.</li>
+    </ul>
+    <h4>Projects it has driven</h4>
+    <ul>
+      <li><b>YouTube automation engine</b>: standing up and running faceless channels from zero, iterating on formats, retention, and scheduling based on performance data.</li>
+      <li><b>Digital product stack</b>: building storefronts, pricing, and fulfillment for a product line, then measuring and tuning it.</li>
+      <li><b>Server operations</b>: turning a single free-tier VPS into a reliable multi-service platform with monitoring and auto-repair.</li>
+    </ul>
+    <p class="modal-note">
+      Built on <a href="https://hermes-agent.nousresearch.com/docs" target="_blank" rel="noopener noreferrer">Hermes Agent by Nous Research</a>, configured and directed by me.
+    </p>
+    <button class="btn btn-ghost btn-sm" data-modal-close>Close</button>
+  </div>
+</div>
+
+<div class="modal" id="modal-tradebot" role="dialog" aria-modal="true" aria-labelledby="tradebot-title">
+  <div class="modal-backdrop" data-modal-close></div>
+  <div class="modal-content">
+    <button class="modal-x" data-modal-close aria-label="Close">×</button>
+    <h3 id="tradebot-title">Trade Bot</h3>
+    <p class="modal-meta"><span class="tag">Python</span> <span class="tag">APIs</span> <span class="tag">Paper trading</span> <span class="tag">Exploration</span></p>
+    <p>
+      An exploration into the APIs of the investment world. The project was a paper-trading
+      automation system: a strategy engine, portfolio logic, a data pipeline, and monitoring,
+      all talking to a live brokerage API with simulated money.
+    </p>
+    <p>
+      The point was never to get rich. It was to understand, hands-on, how the modern
+      investment world exposes itself to software: how orders actually flow, how market
+      data gets in and out, and where the gap between a backtest and a live execution lives.
+    </p>
+    <h4>What it explored</h4>
+    <ul>
+      <li><b>Brokerage APIs</b>: account data, order placement, positions, and paper-trading execution against a real brokerage endpoint.</li>
+      <li><b>Strategy execution</b>: momentum rotation over a basket of 3x leveraged ETFs, scheduled and automated.</li>
+      <li><b>Market data</b>: pulling price history and building the pipeline that feeds the strategy.</li>
+      <li><b>Risk guardrails</b>: drawdown limits and kill-switches, because the first rule of trading software is not blowing up.</li>
+    </ul>
+    <p>
+      What it taught me: the plumbing of the financial world is fascinating, the gap between
+      theory and execution is where the difficulty lives, and the real value was the
+      understanding of the API layer itself.
+    </p>
     <button class="btn btn-ghost btn-sm" data-modal-close>Close</button>
   </div>
 </div>

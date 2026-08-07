@@ -430,6 +430,15 @@ ul { list-style: none; }
 }
 .modal ul b { color: var(--text); }
 
+.modal-note {
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--text-faint);
+  font-style: italic;
+}
+
 /* body scroll lock when modal open */
 body.modal-open { overflow: hidden; }
 
