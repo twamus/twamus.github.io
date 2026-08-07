@@ -5,8 +5,8 @@
   <circle cx="88" cy="72" r="5" fill="#ff5f56"/>
   <circle cx="106" cy="72" r="5" fill="#ffbd2e"/>
   <circle cx="124" cy="72" r="5" fill="#27c93f"/>
-  <text x="88" y="158" font-family="monospace" font-size="20" fill="#9aa7b4">$ hermes run --autonomous</text>
-  <text x="88" y="188" font-family="monospace" font-size="20" fill="#4a9eff">› planning content pipeline...</text>
-  <text x="88" y="218" font-family="monospace" font-size="20" fill="#27c93f">✓ shipped, monitored,</text>
-  <text x="88" y="248" font-family="monospace" font-size="20" fill="#27c93f">✓ self-healing</text>
+  <text x="88" y="144" font-family="monospace" font-size="20" fill="#9aa7b4">$ hermes run --autonomous</text>
+  <text x="88" y="174" font-family="monospace" font-size="20" fill="#4a9eff">› planning content pipeline...</text>
+  <text x="88" y="204" font-family="monospace" font-size="20" fill="#27c93f">✓ shipped, monitored,</text>
+  <text x="88" y="234" font-family="monospace" font-size="20" fill="#27c93f">✓ self-healing</text>
 </svg>
