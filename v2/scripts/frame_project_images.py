@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
-"""Wrap the four legacy project screenshots in the plain style: dark background
-plus the artwork, NO terminal window chrome (matching original tradebot.svg).
-
-Each output SVG embeds the raster screenshot as a base64 data URI (self-
-contained, renders in every browser).
+"""Wrap the four legacy project screenshots in the bordered-box style:
+dark page, rounded black window with a border, screenshot art inside.
+NO terminal stoplights, NO command text (matching original tradebot.svg).
 """
 import base64
 from pathlib import Path
@@ -21,7 +19,8 @@ JOBS = [
 
 TEMPLATE = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" role="img" aria-label="{name}">
   <rect width="500" height="300" fill="#161c26"/>
-  <image href="data:{mime};base64,{b64}" x="0" y="0" width="500" height="300" preserveAspectRatio="xMidYMid meet"/>
+  <rect x="60" y="50" width="380" height="200" rx="10" fill="#0d1117" stroke="#232c3a" stroke-width="2"/>
+  <image href="data:{mime};base64,{b64}" x="60" y="50" width="380" height="200" preserveAspectRatio="xMidYMid meet"/>
 </svg>
 """
 
