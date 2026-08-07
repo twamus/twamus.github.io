@@ -207,11 +207,13 @@ ul { list-style: none; }
   margin-bottom: 36px;
 }
 
+#about h2 { margin-bottom: 10px; }
+
 .about-sub {
-  font-size: 1.25rem;
+  font-size: 1.45rem;
   font-weight: 600;
   color: var(--accent);
-  margin: -20px 0 36px;
+  margin: 0 0 36px;
   letter-spacing: -0.01em;
 }
 
