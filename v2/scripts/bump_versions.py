@@ -18,6 +18,8 @@ INDEX = ROOT / "index.html"
 ASSETS = [
     "assets/css/style.css",
     "assets/js/main.js",
+    "assets/img/projects/hermes.svg",
+    "assets/img/projects/tradebot.svg",
 ]
 
 def short_hash(path: Path) -> str:

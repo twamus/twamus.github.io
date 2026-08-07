@@ -1,11 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" role="img" aria-label="Hermes Agent">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" role="img" aria-label="Axle - Hermes Agent">
   <rect width="500" height="300" fill="#161c26"/>
   <rect x="60" y="55" width="380" height="200" rx="10" fill="#0d1117" stroke="#232c3a" stroke-width="2"/>
   <rect x="60" y="55" width="380" height="34" rx="10" fill="#1c2430"/>
   <circle cx="88" cy="72" r="5" fill="#ff5f56"/>
   <circle cx="106" cy="72" r="5" fill="#ffbd2e"/>
   <circle cx="124" cy="72" r="5" fill="#27c93f"/>
-  <text x="88" y="165" font-family="monospace" font-size="20" fill="#9aa7b4">$ hermes run --autonomous</text>
-  <text x="88" y="195" font-family="monospace" font-size="20" fill="#4a9eff">› planning content pipeline...</text>
-  <text x="88" y="225" font-family="monospace" font-size="20" fill="#27c93f">✓ shipped, monitored, self-healing</text>
+  <text x="88" y="158" font-family="monospace" font-size="20" fill="#9aa7b4">$ hermes run --autonomous</text>
+  <text x="88" y="188" font-family="monospace" font-size="20" fill="#4a9eff">› planning content pipeline...</text>
+  <text x="88" y="218" font-family="monospace" font-size="20" fill="#27c93f">✓ shipped, monitored,</text>
+  <text x="88" y="248" font-family="monospace" font-size="20" fill="#27c93f">✓ self-healing</text>
 </svg>
