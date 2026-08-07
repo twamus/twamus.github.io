@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tom Shearer — Software Developer</title>
+<meta name="description" content="Tom Shearer — software developer and lifelong technology enthusiast. Projects, work experience, and contact." />
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23111'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%234a9eff' font-family='monospace'>&gt;_</text></svg>" />
+</head>
+<body>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#top">tom<span class="accent">.</span>shearer</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-eyebrow">// software developer · data nerd · tinkerer</p>
+      <h1>Tom Shearer</h1>
+      <p class="hero-tagline">Life-long technology enthusiast with a diverse array of work experience — from shipping docks to shipping APIs.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#projects">See my work</a>
+        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="assets/img/me.jpg" alt="Tom Shearer" width="900" height="1214" />
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <p class="section-kicker">01 — about</p>
+    <h2>I build tools that remove busywork.</h2>
+    <div class="about-grid">
+      <p>
+        I'm a software developer with a winding path: I've trained assembly lines for life-saving
+        medical devices, kept multi-million-piece mailings moving through print shops, and
+        written everything from VB.NET data tools to full project-management platforms with
+        packing, shipping, and tracking built in.
+      </p>
+      <p>
+        The common thread is simple — <strong>I automate the boring, repetitive parts of
+        other people's jobs.</strong> The work I'm proudest of saved each project manager
+        roughly three hours a day. That's the kind of impact I like.
+      </p>
+    </div>
+    <ul class="tech-list">
+      <li>PHP</li><li>JavaScript</li><li>C#</li><li>VB.NET</li>
+      <li>Python</li><li>SQL (MSSQL / PostgreSQL)</li><li>HTML/CSS</li>
+      <li>Excel / VBA</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════ PROJECTS ═══════════ -->
+<section class="section section-alt" id="projects">
+  <div class="section-inner">
+    <p class="section-kicker">02 — projects</p>
+    <h2>Things I've built.</h2>
+
+    <div class="project-grid">
+
+      <!-- Nonogram -->
+      <article class="card">
+        <a class="card-img" href="https://github.com/twamus/nonogram" target="_blank" rel="noopener noreferrer">
+          <img src="assets/img/projects/nonogram.jpg" alt="Nonogram puzzle game" loading="lazy" />
+        </a>
+        <div class="card-body">
+          <div class="card-meta"><span class="tag">JavaScript</span><span class="card-year">personal</span></div>
+          <h3>Nonogram</h3>
+          <p>A picross clone — the puzzle game where you reveal a picture by deducing which cells to fill. Written from scratch in JavaScript.</p>
+          <div class="card-links">
+            <a href="projects/nonogram/index.htm" target="_blank" rel="noopener noreferrer">Play it →</a>
+            <a href="https://github.com/twamus/nonogram" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- qDIR64 -->
+      <article class="card">
+        <a class="card-img" href="#qdir64" data-modal-open="qdir64">
+          <img src="assets/img/projects/qdir64.png" alt="qDIR64 file management tool" loading="lazy" />
+        </a>
+        <div class="card-body">
+          <div class="card-meta"><span class="tag">VB.NET</span><span class="tag">Python</span><span class="card-year">2014</span></div>
+          <h3>qDIR64</h3>
+          <p>A modular file and data-list management tool that modernized a 16-bit qBASIC legacy system — keyboard-driven, extensible, built to outlive the software it replaced.</p>
+          <div class="card-links">
+            <a href="#qdir64" data-modal-open="qdir64">Details →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PMT -->
+      <article class="card">
+        <a class="card-img" href="#pmt" data-modal-open="pmt">
+          <img src="assets/img/projects/pmt.png" alt="Project Management Tool" loading="lazy" />
+        </a>
+        <div class="card-body">
+          <div class="card-meta"><span class="tag">PHP</span><span class="tag">JS</span><span class="tag">SQL</span><span class="card-year">proprietary</span></div>
+          <h3>Project Management Tool</h3>
+          <p>A full project-management platform with packing, shipping, and tracking integration — replacing a spreadsheet nightmare. Name redacted, mockup from memory.</p>
+          <div class="card-links">
+            <a href="#pmt" data-modal-open="pmt">Details →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Shipping Tool -->
+      <article class="card">
+        <a class="card-img" href="#shiptool" data-modal-open="shiptool">
+          <img src="assets/img/projects/shippingtool.png" alt="Shipping Tool" loading="lazy" />
+        </a>
+        <div class="card-body">
+          <div class="card-meta"><span class="tag">C#</span><span class="card-year">never shipped</span></div>
+          <h3>Shipping Tool</h3>
+          <p>A FedEx-certified shipping application that completed the loop between packing and project management — thermal labels, scale integration, live package tracking.</p>
+          <div class="card-links">
+            <a href="#shiptool" data-modal-open="shiptool">Details →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="section-note">* Some projects were built for employers and can't be shared in full — only descriptions and screenshots. Details below.</p>
+  </div>
+</section>
+
+<!-- ═══════════ EXPERIENCE ═══════════ -->
+<section class="section" id="experience">
+  <div class="section-inner">
+    <p class="section-kicker">03 — experience</p>
+    <h2>Where I've been.</h2>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <p class="tl-role">Software Development &amp; Logistics Team Leader</p>
+          <p class="tl-co">Culminate</p>
+          <ul>
+            <li>Built an integrated software suite handling job workflow from project management to shipping — <strong>saving a minimum of 3 hours of labor per project manager, per day</strong>.</li>
+            <li>Created an API to integrate the work order system with Adobe Creative Suite.</li>
+            <li>Local on-site IT for hardware and networking across Linux, Mac, and Windows.</li>
+            <li>Processed client mailing lists with VBA scripts in Excel; maintained client design templates in InDesign.</li>
+            <li>Managed pickups, quoting, and scheduling for freight and domestic carriers.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <p class="tl-role">Sr. Data Analyst / Systems Administrator</p>
+          <p class="tl-co">Complemar Partners</p>
+          <ul>
+            <li>Created a modular file management system for mailing jobs that ran custom Python scripts — data merge, file conversion, deduplication, label layouts, N-up and booklet shuffling.</li>
+            <li>Designed a print queue management system for large variable-data jobs to minimize spooling times.</li>
+            <li>On-site help desk, server maintenance, and in-house software troubleshooting — including digging into MSSQL tables for the company's pick/pack/ship platform.</li>
+            <li>Facilitated local network infrastructure setup and maintenance.</li>
+            <li>Saved thousands per year by standardizing desktop printers around cheaper toner.</li>
+            <li>Implemented e-waste recycling within the division. HIPAA data handling certified.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <p class="tl-role">Assembly Trainer</p>
+          <p class="tl-co">Hamilton Medical</p>
+          <ul>
+            <li>Worked with acting leads to build 3 solid teams for main-line production of life-saving devices.</li>
+            <li>Trained others to follow manufacturing process instructions and certified them upon success.</li>
+            <li>Learned and mastered assembly of the T1 military-grade transport ventilator.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <p class="tl-role">Shipping / Receiving Clerk</p>
+          <p class="tl-co">Intuit</p>
+          <ul>
+            <li>Tracked incoming/outgoing mail and shipping metrics for the tax department.</li>
+            <li>Briefly administered the company's shipping platform.</li>
+            <li>Performed mass address imports/exports to automate shipping during busy seasons.</li>
+            <li>SOX audit compliance.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section class="section section-alt" id="contact">
+  <div class="section-inner">
+    <p class="section-kicker">04 — contact</p>
+    <h2>Say hello.</h2>
+    <p class="contact-lede">Best reached on LinkedIn, or by email. I don't have any other social media — that's on purpose.</p>
+    <div class="contact-actions">
+      <a class="btn btn-primary" href="https://www.linkedin.com/in/twam/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a class="btn btn-ghost" href="mailto:tshearer634@gmail.com">tshearer634@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <p>© <span id="year">2026</span> Tom Shearer. Built by hand — no frameworks, no trackers.</p>
+    <p class="footer-links"><a href="https://github.com/twamus" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://www.linkedin.com/in/twam/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+  </div>
+</footer>
+
+<!-- ═══════════ PROJECT MODALS ═══════════ -->
+<div class="modal" id="modal-qdir64" role="dialog" aria-modal="true" aria-labelledby="qdir64-title">
+  <div class="modal-backdrop" data-modal-close></div>
+  <div class="modal-content">
+    <button class="modal-x" data-modal-close aria-label="Close">×</button>
+    <h3 id="qdir64-title">qDIR64</h3>
+    <p class="modal-meta"><span class="tag">VB.NET</span> <span class="tag">Python</span> <span class="tag">2014</span></p>
+    <p>
+      The original qDIR was an in-house file/data management tool written in qBASIC, used to process and
+      manage mailing data lists. These utilities were rewritten in Visual Basic and Python around 2014.
+    </p>
+    <p>
+      As 16-bit applications reached end of life, our old data tools were about to be left in the dust.
+      We needed a solution that survived the deprecation, retained compatibility with older files, and
+      allowed future growth without breaking the core system or the workflow.
+    </p>
+    <img src="assets/img/projects/qdir64-1.png" alt="qDIR64 screenshot" loading="lazy" />
+    <h4>Notable features</h4>
+    <ul>
+      <li>Fully keyboard-navigable to speed up processing — spacebar to select, tab to switch tools, back arrow to swap between files and folders.</li>
+      <li>Customizable toolbar; enable and disable tools with drag and drop.</li>
+      <li>Purely modular — core written in VB, supporting tools written in Python and other languages.</li>
+    </ul>
+    <h4>Python tool descriptions</h4>
+    <ul>
+      <li><b>ADD</b> — blindly combines multiple CSV files; useful for combining standardized lists.</li>
+      <li><b>DBF to CSV</b> — converts DBIII files to CSV format.</li>
+      <li><b>ODOA Test</b> — strips line breaks out of the middle of CSV fields.</li>
+      <li><b>Satori Prep</b> — prepares CSVs for Satori Bulk Mailer, preserving fields the tool shouldn't touch.</li>
+      <li><b>Shuffle</b> — prepares items for N-up printing so stacked postcards come out in the right order.</li>
+      <li><b>Split</b> — splits one CSV into multiple by a field value.</li>
+      <li><b>Title Case / Uppercase</b> — field case normalizers.</li>
+    </ul>
+    <h4>VB tool descriptions</h4>
+    <ul>
+      <li><b>DBQ</b> — quick CSV viewer/editor (for when Excel dropped leading zeros on zip codes).</li>
+      <li><b>LLoDD</b> — generated layout previews and .ADM files for inkjet address printers.</li>
+      <li><b>Merge</b> — merges CSVs of varying contents into one clean master; user picks which fields merge.</li>
+      <li><b>Zip4 Finder</b> — pulled from the USPS website to verify Zip+4 when Satori missed the mark.</li>
+    </ul>
+    <button class="btn btn-ghost btn-sm" data-modal-close>Close</button>
+  </div>
+</div>
+
+<div class="modal" id="modal-pmt" role="dialog" aria-modal="true" aria-labelledby="pmt-title">
+  <div class="modal-backdrop" data-modal-close></div>
+  <div class="modal-content">
+    <button class="modal-x" data-modal-close aria-label="Close">×</button>
+    <h3 id="pmt-title">Project Management Tool</h3>
+    <p class="modal-meta"><span class="tag">PHP</span> <span class="tag">JavaScript</span> <span class="tag">SQL</span> <span class="tag">MAPP stack</span></p>
+    <p>
+      Due to the nature of proprietary information, I can't share the name or screenshots of this one —
+      so I referred to it as <em>PMT</em>, and recreated the interface from memory in Microsoft Paint.
+    </p>
+    <img src="assets/img/projects/pmt-mockup.png" alt="PMT mockup drawn in Microsoft Paint" loading="lazy" />
+    <p>
+      Workflow originally ran on Excel documents updated throughout the day — a logistical nightmare
+      when everyone needed the same current version. This tool centrally hosted work orders for clients
+      shipping to stores nationwide, with templates and presets to streamline repeat work. It was a fully
+      functional project management tool with complete integration into packing, shipping, and tracking.
+    </p>
+    <p>Built on a MAPP stack (Mac Server, Apache, PostgreSQL, PHP).</p>
+    <h4>Project management (core) features</h4>
+    <ul>
+      <li>Export items to Excel spreadsheet.</li>
+      <li>Billing amortization of company fees based on percentage of billable items per store and project.</li>
+      <li>Presets of common items and the ability to copy items between stores or tabs.</li>
+      <li>Multiple budgeting sheets.</li>
+    </ul>
+    <h4>Packing and shipping integration</h4>
+    <ul>
+      <li>Packing list generation with QR codes as unique package identifiers.</li>
+      <li>Override in the packing system when shipments needed a different destination.</li>
+      <li>End-of-day tracking reports for project managers.</li>
+      <li>Automatic package delivery status and location updates from freight and domestic carriers.</li>
+    </ul>
+    <button class="btn btn-ghost btn-sm" data-modal-close>Close</button>
+  </div>
+</div>
+
+<div class="modal" id="modal-shiptool" role="dialog" aria-modal="true" aria-labelledby="shiptool-title">
+  <div class="modal-backdrop" data-modal-close></div>
+  <div class="modal-content">
+    <button class="modal-x" data-modal-close aria-label="Close">×</button>
+    <h3 id="shiptool-title">Shipping Tool</h3>
+    <p class="modal-meta"><span class="tag">C#</span> <span class="tag">FedEx Web Services</span></p>
+    <p>
+      Designed to complete the loop between the packing system and the project management tool — intended
+      as the primary shipping method. The field sizing looks a little off because of a mix of window
+      previews, a newer Visual Studio, and a newer .NET version.
+    </p>
+    <img src="assets/img/projects/shippingtool.png" alt="Shipping Tool screenshot" loading="lazy" />
+    <p>
+      It never officially launched into production, which means I can share more details than the PMT.
+      All options are fully functional unless noted as in development.
+    </p>
+    <h4>Shipping-related features</h4>
+    <ul>
+      <li>Domestic shipping integration with FedEx Web Services (project was certified).</li>
+      <li>Label and packing list reprinting.</li>
+      <li>Mettler-Toledo scale integration.</li>
+      <li>Third-party billing, Saturday delivery, and direct-signature-required options.</li>
+      <li>Filtering large job item lists by item type or ID.</li>
+    </ul>
+    <h4>Company-specific features</h4>
+    <ul>
+      <li>Colored thermal routing labels and thermal packing lists.</li>
+      <li>Live highlight of items being changed by project managers via SQL LISTEN/NOTIFY triggers.</li>
+      <li>Savable presets of common box types.</li>
+      <li>(Mid-development) batch shipping using weight estimation for similar items.</li>
+      <li>Automatic, manual, and location overrides for package destinations.</li>
+    </ul>
+    <button class="btn btn-ghost btn-sm" data-modal-close>Close</button>
+  </div>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

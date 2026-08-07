@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Nonogram, by Tom Shearer</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="game.js"></script>
+</head>
+
+<body>
+	<div id="container">
+		<div id="main">
+
+		</div>
+		<br>
+		<div id="win"></div>
+
+		<div id="menubar">
+			<input type="hidden" value="pen" id="toolname">
+			<div id="tools">
+				<div id="pen" class='tool'>🖋️</div>
+				<div id="cross" class='tool'>❌</div>
+			</div>
+			<div id="lives"> </div>
+			<input type='button' id="newgame" value="New Game" onclick="restartGame();">
+		</div>
+
+	</div>
+	<div id="version"></div>
+	<script>
+	newGame();
+	</script>
+</body>
+</html>
