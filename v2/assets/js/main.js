@@ -1,4 +1,4 @@
-/* Tom Shearer — v2 portfolio JS. Zero dependencies. */
+/* Tom Shearer · v2 portfolio JS. Zero dependencies. */
 (function () {
   "use strict";
 
