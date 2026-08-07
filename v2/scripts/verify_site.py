@@ -29,8 +29,8 @@ for html_file in ROOT.rglob("*.html"):
     for tag, ref in parser.refs:
         if ref.startswith(("http://", "https://", "mailto:", "#", "data:", "javascript:")):
             continue
-        # strip fragment
-        path_part = ref.split("#")[0]
+        # strip fragment AND cache-busting query (?v=...)
+        path_part = ref.split("#")[0].split("?")[0]
         if not path_part:
             continue
         target = (base / path_part).resolve()
